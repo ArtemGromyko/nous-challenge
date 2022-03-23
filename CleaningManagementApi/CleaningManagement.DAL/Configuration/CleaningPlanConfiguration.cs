@@ -11,7 +11,6 @@ namespace CleaningManagement.DAL.Configuration
         {
             builder.Property(cp => cp.Title).HasMaxLength(256).IsRequired();
             builder.Property(cp => cp.CustomerId).IsRequired();
-            builder.Property(cp => cp.CreationDate).HasDefaultValueSql("GETDATE()");
             builder.Property(cp => cp.Description).HasMaxLength(512);
 
             builder.HasData

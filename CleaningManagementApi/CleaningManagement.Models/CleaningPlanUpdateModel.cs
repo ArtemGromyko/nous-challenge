@@ -2,9 +2,8 @@
 
 namespace CleaningManagement.Models
 {
-    public class CleaningPlanCreationModel
+    public class CleaningPlanUpdateModel
     {
-        [Required]
         [MaxLength(256)]
         public string Title { get; set; }
         [MaxLength(512)]

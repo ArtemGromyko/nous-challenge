@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using CleaningManagement.BLL.Contracts;
+using CleaningManagement.Models;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace CleaningManagement.Api.Controllers
 {
@@ -6,12 +11,58 @@ namespace CleaningManagement.Api.Controllers
     [Route("api/cleaningplans")]
     public class CleaningPlansController : ControllerBase
     {
+        private readonly ICleaningPlanService _cleaningPlanService;
+        private readonly IMapper _mapper;
+        public CleaningPlansController(ICleaningPlanService cleaningPlanService, IMapper mapper)
+        {
+            _cleaningPlanService = cleaningPlanService;
+            _mapper = mapper;
+        }
 
-        [HttpGet]
-        public IActionResult GetCleaningPlans() => Ok();
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CleaningPlanResponseModel>> GetCleaningPlan(Guid id)
+        {
+            var cleaningPlan = await _cleaningPlanService.GetCleaningPlanByIdAsync(id);
 
-        /*
-         * TODO: Provide your implementation.
-         */
+            if(cleaningPlan == null)
+            {
+                return NotFound();
+            }
+
+            return _mapper.Map<CleaningPlanResponseModel>(cleaningPlan);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCleaningPlanByIdAsync(Guid id)
+        {
+            var cleaningPlan = await _cleaningPlanService.GetCleaningPlanByIdAsync(id);
+
+            if (cleaningPlan == null)
+            {
+                return NotFound();
+            }
+
+            await _cleaningPlanService.DeleteCleaningPlanAsync(cleaningPlan);
+            
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateCleaningPlanAsync(Guid id, 
+            [FromBody] CleaningPlanUpdateModel cleaningPlanUpdateModel)
+        {
+            var cleaningPlan = await _cleaningPlanService.GetCleaningPlanByIdAsync(id);
+
+            if (cleaningPlan == null)
+            {
+                return NotFound();
+            }
+            
+            _mapper.Map(cleaningPlanUpdateModel, cleaningPlan);
+
+            await _cleaningPlanService.UpdateCleaningPlanAsync(cleaningPlan);
+
+            return NoContent();
+        }
     }
 }

@@ -13,9 +13,11 @@ namespace CleaningManagement.DAL.Repositories
         public CleaningPlanRepository(CleaningManagementDbContext cleaningManagementDbContext) : 
             base(cleaningManagementDbContext) { }
 
-        public async Task CreateCleaningPlanAsync(CleaningPlan cleaningPlan)
+        public async Task<CleaningPlan> CreateCleaningPlanAsync(CleaningPlan cleaningPlan)
         {
             await CreateAsync(cleaningPlan);
+            
+            return cleaningPlan;
         }
 
         public async Task DeleteCleaningPlanAsync(CleaningPlan cleaningPlan)
@@ -28,5 +30,13 @@ namespace CleaningManagement.DAL.Repositories
 
         public async Task<CleaningPlan> GetCleaningPlanByIdAsync(Guid id) =>
             await FindByCondition(cp => cp.Id.Equals(id)).SingleOrDefaultAsync();
+
+        public async Task<CleaningPlan> GetCleaningPlanForCustomerByIdAsync(int customerId, Guid id) =>
+            await FindByCondition(cp => cp.Id.Equals(id) && cp.CustomerId.Equals(customerId)).SingleOrDefaultAsync();
+
+        public async Task UpdateCleaningPlanAsync(CleaningPlan cleaningPlan)
+        {
+            await UpdateAsync(cleaningPlan);
+        }
     }
 }
