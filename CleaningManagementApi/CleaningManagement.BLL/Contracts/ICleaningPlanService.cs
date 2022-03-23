@@ -7,7 +7,7 @@ namespace CleaningManagement.BLL.Contracts
 {
     public interface ICleaningPlanService
     {
-        Task<CleaningPlan> CreateCleaningPlanAsync(CleaningPlan cleaningPlan);
+        Task CreateCleaningPlanAsync(CleaningPlan cleaningPlan);
         Task<List<CleaningPlan>> GetAllCleaningPlansForCustomerAsync(int customerId);
         Task<CleaningPlan> GetCleaningPlanByIdAsync(Guid id);
         Task DeleteCleaningPlanAsync(CleaningPlan cleaningPlan);

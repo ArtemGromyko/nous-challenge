@@ -16,9 +16,9 @@ namespace CleaningManagement.BLL.Services
             _cleaningPlanRepository = cleaningPlanRepository;
         }
 
-        public async Task<CleaningPlan> CreateCleaningPlanAsync(CleaningPlan cleaningPlan)
+        public async Task CreateCleaningPlanAsync(CleaningPlan cleaningPlan)
         {
-           return await _cleaningPlanRepository.CreateCleaningPlanAsync(cleaningPlan);
+            await _cleaningPlanRepository.CreateCleaningPlanAsync(cleaningPlan);
         }
 
         public async Task DeleteCleaningPlanAsync(CleaningPlan cleaningPlan)

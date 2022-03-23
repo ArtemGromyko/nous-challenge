@@ -13,6 +13,7 @@ namespace CleaningManagement.Api.Controllers
     {
         private readonly ICleaningPlanService _cleaningPlanService;
         private readonly IMapper _mapper;
+
         public CleaningPlansController(ICleaningPlanService cleaningPlanService, IMapper mapper)
         {
             _cleaningPlanService = cleaningPlanService;
@@ -20,7 +21,7 @@ namespace CleaningManagement.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CleaningPlanResponseModel>> GetCleaningPlan(Guid id)
+        public async Task<IActionResult> GetCleaningPlanById(Guid id)
         {
             var cleaningPlan = await _cleaningPlanService.GetCleaningPlanByIdAsync(id);
 
@@ -29,11 +30,11 @@ namespace CleaningManagement.Api.Controllers
                 return NotFound();
             }
 
-            return _mapper.Map<CleaningPlanResponseModel>(cleaningPlan);
+            return Ok(_mapper.Map<CleaningPlanResponseModel>(cleaningPlan));
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteCleaningPlanByIdAsync(Guid id)
+        public async Task<IActionResult> DeleteCleaningPlanById(Guid id)
         {
             var cleaningPlan = await _cleaningPlanService.GetCleaningPlanByIdAsync(id);
 
@@ -48,8 +49,8 @@ namespace CleaningManagement.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateCleaningPlanAsync(Guid id, 
-            [FromBody] CleaningPlanUpdateModel cleaningPlanUpdateModel)
+        public async Task<IActionResult> UpdateCleaningPlan(Guid id, 
+        [FromBody] CleaningPlanUpdateModel cleaningPlanUpdateModel)
         {
             var cleaningPlan = await _cleaningPlanService.GetCleaningPlanByIdAsync(id);
 
@@ -59,7 +60,6 @@ namespace CleaningManagement.Api.Controllers
             }
             
             _mapper.Map(cleaningPlanUpdateModel, cleaningPlan);
-
             await _cleaningPlanService.UpdateCleaningPlanAsync(cleaningPlan);
 
             return NoContent();

@@ -8,5 +8,6 @@ namespace CleaningManagement.Models
         public string Title { get; set; }
         [MaxLength(512)]
         public string Description { get; set; }
+        public int CustomerId { get; set; }
     }
 }

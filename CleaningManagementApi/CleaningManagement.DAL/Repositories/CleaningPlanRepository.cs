@@ -13,11 +13,9 @@ namespace CleaningManagement.DAL.Repositories
         public CleaningPlanRepository(CleaningManagementDbContext cleaningManagementDbContext) : 
             base(cleaningManagementDbContext) { }
 
-        public async Task<CleaningPlan> CreateCleaningPlanAsync(CleaningPlan cleaningPlan)
+        public async Task CreateCleaningPlanAsync(CleaningPlan cleaningPlan)
         {
             await CreateAsync(cleaningPlan);
-            
-            return cleaningPlan;
         }
 
         public async Task DeleteCleaningPlanAsync(CleaningPlan cleaningPlan)

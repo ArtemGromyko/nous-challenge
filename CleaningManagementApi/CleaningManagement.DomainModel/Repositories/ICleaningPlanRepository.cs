@@ -7,7 +7,7 @@ namespace CleaningManagement.DomainModel.Repositories
 {
     public interface ICleaningPlanRepository
     {
-        Task<CleaningPlan> CreateCleaningPlanAsync(CleaningPlan cleaningPlan);
+        Task CreateCleaningPlanAsync(CleaningPlan cleaningPlan);
         Task<List<CleaningPlan>> GetAllCleaningPlansForCustomerAsync(int customerId);
         Task<CleaningPlan> GetCleaningPlanByIdAsync(Guid id);
         Task<CleaningPlan> GetCleaningPlanForCustomerByIdAsync(int customerId, Guid id);
