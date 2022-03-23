@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleaningManagement.DAL", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningManagement.DomainModel", "CleaningManagement.DomainModel\CleaningManagement.DomainModel.csproj", "{6AE1FD19-E95D-4EB0-B1B5-04439DB48B05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningManagement.Models", "CleaningManagement.Models\CleaningManagement.Models.csproj", "{5889DFB0-9F07-405B-9E5A-AA9578AEEEB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6AE1FD19-E95D-4EB0-B1B5-04439DB48B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE1FD19-E95D-4EB0-B1B5-04439DB48B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE1FD19-E95D-4EB0-B1B5-04439DB48B05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5889DFB0-9F07-405B-9E5A-AA9578AEEEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5889DFB0-9F07-405B-9E5A-AA9578AEEEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5889DFB0-9F07-405B-9E5A-AA9578AEEEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5889DFB0-9F07-405B-9E5A-AA9578AEEEB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
