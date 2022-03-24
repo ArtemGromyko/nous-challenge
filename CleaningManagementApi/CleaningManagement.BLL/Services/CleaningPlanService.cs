@@ -18,6 +18,7 @@ namespace CleaningManagement.BLL.Services
 
         public async Task CreateCleaningPlanAsync(CleaningPlan cleaningPlan)
         {
+            cleaningPlan.CreationDate = DateTime.Now;
             await _cleaningPlanRepository.CreateCleaningPlanAsync(cleaningPlan);
         }
 

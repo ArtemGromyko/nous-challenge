@@ -12,6 +12,7 @@ namespace CleaningManagement.DAL.Configuration
             builder.Property(cp => cp.Title).HasMaxLength(256).IsRequired();
             builder.Property(cp => cp.CustomerId).IsRequired();
             builder.Property(cp => cp.Description).HasMaxLength(512);
+            builder.Property(cp => cp.CreationDate).IsRequired();
 
             builder.HasData
             (
@@ -21,7 +22,7 @@ namespace CleaningManagement.DAL.Configuration
                     Title = "Hotel Room Cleaning, double bed",
                     CustomerId = 123223,
                     Description = "This plan is meant to be used for double bed rooms.",
-                    CreationDate = new DateTime(2015, 7, 20)
+                    CreationDate = new DateTime(2015, 7, 20),
                 }
             );
         }
